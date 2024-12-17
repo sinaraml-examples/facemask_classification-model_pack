@@ -2,22 +2,26 @@
     "pipeline_params":
     {
         "env_name":"user",
-        "pipeline_name":"pipeline",
-        "zone_name":"zone",
-        "X": "something"
+        "pipeline_name":"facemask_classification_rest",
+        "zone_name":"test"
     },
     "step_params":
     {
-        "Y": "something_else"
+        "ONNX_convert_params": {
+            "device": "cuda:0",
+            "opset_version": 11,
+            "verbose": false           
+            
+        }
+        
     },
     "substeps_params":
-    [
+    [        
         {
-            "substep_name":"do_step.ipynb",
+            "substep_name":"model_pack.ipynb",
             "substep_params":
             {
-                "param1":"None1",
-                "param2":"None2"
+                "save_best": false                
             }
         }
     ]

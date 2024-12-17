@@ -1,30 +1,7 @@
-# pipeline-step_template
+# Step CV-Pipeline: model_pack
 
-Prerequisites
-
-- Sinara is successfully deployed as described in [SinaraML Tutorial](https://github.com/4-DS/sinara-tutorials/wiki/Getting-started-with-SinaraML)
-
-# Step repository naming conventions
-
-We will recommend forming the git repo name as: <%pipeline_name>-<%step_name>
-
-But this is not a mandatory requirement. And our library should work under any layouts with naming
-
-The authoritative source of the pipeline and step names will now be exclusively in configs, and will not be tightly tied to the names of folders and git repositories
-
-
-Make the following to create your Sinara step:
-
-1. Create empty git repo with https://github.com/<%organization_name>/<%pipeline_name>-<%step_name>.git 
-2. Clone the dsml component template repository
-- cd work
-- git clone --recurse-submodules https://github.com/4-DS/pipeline-step_template.git {my_step}
-3. Change dsml component remote origin
-- cd {my_step}
-- git remote set-url origin https://github.com/<%organization_name>/<%pipeline_name>-<%step_name>.git
-4. Squash dsml component template commits
-- cd {my_step}
-- git reset $(git commit-tree HEAD^{tree} -m "a new Sinara step")
-5. Push dsml component template to new origin
-- git push
-6. See the [Getting Started](https://github.com/4-DS/sinara-tutorials/wiki/Getting-started) for details
+During the CV Pipeline Model_Pack stage, the following steps take place:
+1. Model conversion     
+   The model trained in the previous CV-Pipeline Model_Train stage is converted into a format suitable for specific scenarios. For example, if the REST CV-Pipeline scenario is chosen, the model may be converted into the ONNX format, which enables deploying the model as a REST service.
+2. Packaging into bentoservice     
+   After model conversion, the model weights and all necessary artifacts (e.g., test image, predictions on the test image) are packaged into bentoservice. Packaging into bentoservice allows creating a containerized application that can be easily deployed and used for inference (prediction) on new data.
