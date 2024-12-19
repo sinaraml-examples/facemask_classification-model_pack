@@ -10,8 +10,8 @@
         "ONNX_convert_params": {
             "device": "cuda:0",
             "opset_version": 11,
-            "verbose": false           
-            
+            "verbose": false,
+            "input_size": [32, 32]            
         }
         
     },
