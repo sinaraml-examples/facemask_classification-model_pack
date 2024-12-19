@@ -29,7 +29,7 @@ class PrePostProcessing:
         
         predict_class_ids = np.argmax(predicts[0], axis=1).tolist()
         predict_scores = np.round(softmax(predicts[0]).astype(np.float64), decimals=3).tolist()      
-        predict_class_names = [categories.get(class_id) for class_id in predict_class_ids]
+        predict_class_names = [categories.get(str(class_id)) for class_id in predict_class_ids]
         predict_out = {"class_ids": predict_class_ids,
                        "class_names": predict_class_names,
                        "class_scores": predict_scores}
