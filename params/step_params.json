@@ -1,0 +1,28 @@
+{
+    "pipeline_params":
+    {
+        "env_name":"user",
+        "pipeline_name":"facemask_classification_rest",
+        "zone_name":"test"
+    },
+    "step_params":
+    {
+        "ONNX_convert_params": {
+            "device": "cuda:0",
+            "opset_version": 11,
+            "verbose": false,
+            "input_size": [32, 32]            
+        }
+        
+    },
+    "substeps_params":
+    [        
+        {
+            "substep_name":"model_pack.ipynb",
+            "substep_params":
+            {
+                "save_best": false                
+            }
+        }
+    ]
+}
